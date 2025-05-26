@@ -78,4 +78,3 @@ Opciones:
 
 ## Problemas conocidos
 - Liberación de memoria: Ocasionalmente ocurre un segmentation fault al salir del programa.
-- Al reiniciar, los objetos tomados, no se reinician
