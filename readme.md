@@ -1,7 +1,7 @@
 # GraphQuest
 # Hecho por Hans Gonzalez - Paralelo 2
 
-Este programa en permite recorrer distintos escenarios que son cargados de una base de un archivo CSV. Utilizando estructuras como `TreeMap` y `List` para poder usar un grafo para poder avanzar por los escenarios recogiendo los objetos de mayor valor posible e intentando llegar a la salida, antes que se agote el tiempo
+Este programa permite recorrer distintos escenarios que son cargados de un archivo CSV. Utilizando estructuras como `TreeMap` y `List` para poder usar un grafo para poder avanzar por los escenarios recogiendo los objetos de mayor valor posible e intentando llegar a la salida, antes que se agote el tiempo
 
 ## Funcionalidades Implementadas
 
