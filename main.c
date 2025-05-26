@@ -410,10 +410,24 @@ void mover_jugador(NodoGrafo** actual, Inventario* inv, float* tiempo)
 }
 
 //esta tiene la funcion de reiniciar el juego, e iniciar todo desde cero
-void reiniciar_partida(Grafo* grafo, NodoGrafo** actual, Inventario* inv, float* tiempo)
+void reiniciar_partida(Grafo** grafo, NodoGrafo** actual, Inventario* inv, float* tiempo)
 {
+    //Libera memoria de el grafo actual
+    NodoGrafo* nodo = (*grafo)->lista;
+    while (nodo) {
+        NodoGrafo* siguiente = nodo->siguiente;
+        if (nodo->items) free(nodo->items);
+        free(nodo);
+        nodo = siguiente;
+    }
+    free(*grafo);
+
+    //vuelve a cargar el grafo desde el archivo
+    *grafo = leer_escenarios("graphquest.csv");
+    *actual = (*grafo)->inicio;
+
     //Vuelve todo lo que se haya avanzado al inicio, volviendo a cero y el tiempo volviendo a ser 10
-    *actual = grafo->inicio;
+    if (inv->items) free(inv->items);
     inv->cantidad = 0;
     inv->peso_total = 0;
     inv->valor_total = 0;
@@ -454,7 +468,7 @@ int main()
                 mover_jugador(&actual, &inv, &tiempo);
                 break;
             case 4:
-                reiniciar_partida(grafo, &actual, &inv, &tiempo);
+                reiniciar_partida(&grafo, &actual, &inv, &tiempo);
                 break;
             case 5:
                 printf("Saliendo del juego");
